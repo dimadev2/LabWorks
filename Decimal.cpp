@@ -176,3 +176,7 @@ size_t Decimal::size() const {
 const Decimal operator-(const Decimal& d1, const Decimal d2) {
 	return d1 + (-d2);
 }
+
+std::ostream& operator<<(std::ostream& os, const Decimal& d) {
+	return os << d.Sign ? "-" : "" << d.reverseValue();
+}
