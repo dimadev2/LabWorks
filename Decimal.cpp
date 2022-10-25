@@ -113,7 +113,7 @@ const Decimal operator+(const Decimal& d1, const Decimal& d2) {
 	return static_cast<const Decimal>(res);
 }
 
-bool operator>(CONST Decimal& d1, CONST Decimal& d2) {
+bool operator>=(const Decimal& d1, const Decimal& d2) {
 	if (d1.Value.size() > d2.Value.size()) {
 		return true;
 	}
@@ -122,7 +122,7 @@ bool operator>(CONST Decimal& d1, CONST Decimal& d2) {
 	}
 
 	for (int i = d1.Value.size() - 1; i >= 0; i--) {
-		if (d1.Value[i] > d2.Value[i]) {
+		if (d1.Value[i] >= d2.Value[i]) {
 			return true;
 		}
 	}
@@ -130,9 +130,9 @@ bool operator>(CONST Decimal& d1, CONST Decimal& d2) {
 	return false;
 }
 
-const Decimal Decimal::diff(const Decimal& other) {
-	std::string maxValue = (*this) > other ? Value : other.Value;
-	std::string minValue = (*this) > other ? other.Value : Value;
+const Decimal Decimal::diff(const Decimal& other) const {
+	std::string maxValue = (*this) >= other ? Value : other.Value;
+	std::string minValue = (*this) >= other ? other.Value : Value;
 
 	std::string res = "";
 
@@ -173,10 +173,10 @@ size_t Decimal::size() const {
 	return Value.size();
 }
 
-const Decimal operator-(const Decimal& d1, const Decimal d2) {
+const Decimal operator-(const Decimal& d1, const Decimal& d2) {
 	return d1 + (-d2);
 }
 
 std::ostream& operator<<(std::ostream& os, const Decimal& d) {
-	return os << d.Sign ? "-" : "" << d.reverseValue();
+	return os << "d.reverseValue(d.Value)";
 }

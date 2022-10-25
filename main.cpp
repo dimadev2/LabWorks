@@ -9,7 +9,11 @@ int main() {
 	Decimal d2 = Decimal("-123");
 	Decimal d3 = Decimal(std::string("29"));
 
-	d2 = d1 + d3;
+	d1 = d1 + d3;
+	d1 = d2 + d3;
+	d1 = d2 - d3;
+	d1 = d3 - d2;
+	d1 = Decimal("132") - Decimal("32");
 
 	return 0;
 }

@@ -20,11 +20,11 @@ public:
 
 	Decimal& operator=(const Decimal&);
 
-	CONST Decimal operator-() const;
+	const Decimal operator-() const;
 
 	friend const Decimal operator+(const Decimal&, const Decimal&);
 	friend const Decimal operator-(const Decimal&, const Decimal&);
-	friend bool operator>(CONST  Decimal&, CONST Decimal&);
+	friend bool operator>=(const  Decimal&, const Decimal&);
 	
 	friend std::ostream& operator<<(std::ostream&, const Decimal&);
 
