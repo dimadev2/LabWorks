@@ -131,9 +131,9 @@ bool operator>(CONST Decimal& d1, CONST Decimal& d2) {
 	return false;
 }
 
-CONST Decimal operator-(CONST Decimal& d1, cCONST Decimal& d2) {
-	std::string maxValue = d1 > d2 ? d1.Value : d2.Value;
-	std::string minValue = d1 > d2 ? d2.Value : d1.Value;
+CONST Decimal Decimal::diff(CONST Decimal& other) {
+	std::string maxValue = (*this) > other ? Value : other.Value;
+	std::string minValue = (*this) > other ? other.Value : Value;
 
 	std::string res = "";
 

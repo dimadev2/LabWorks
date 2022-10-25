@@ -29,7 +29,7 @@ private:
 	std::string Value;
 	bool Sign = false;
 	const Decimal sum(const Decimal&) const;
-	//const Decimal diff(const Decimal&) const;
+	const Decimal diff(const Decimal&) const;
 
 	std::string reverseValue(const std::string& s) const;
 };
