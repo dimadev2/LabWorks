@@ -106,9 +106,8 @@ const Decimal operator+(const Decimal& d1, const Decimal& d2) {
 		res.Sign = d1.Sign;
 	}
 	else {
-//		res = d1.diff(d2);
-//		res.Sign = d1 >= d2 ? false : true;
-		;
+		res = d1.diff(d2);
+		res.Sign = d1 >= d2 ? false : true;
 	}
 
 	return static_cast<const Decimal>(res);
@@ -131,7 +130,7 @@ bool operator>(CONST Decimal& d1, CONST Decimal& d2) {
 	return false;
 }
 
-CONST Decimal Decimal::diff(CONST Decimal& other) {
+const Decimal Decimal::diff(const Decimal& other) {
 	std::string maxValue = (*this) > other ? Value : other.Value;
 	std::string minValue = (*this) > other ? other.Value : Value;
 
@@ -160,5 +159,20 @@ CONST Decimal Decimal::diff(CONST Decimal& other) {
 
 	Decimal Res = Decimal(res);
 
-	return static_cast<CONST Decimal>(Res);
+	return static_cast<const Decimal>(Res);
+}
+
+const Decimal Decimal::operator-() const {
+	Decimal res = *this;
+	res.Sign = !res.Sign;
+
+	return static_cast<const Decimal> (res);
+}
+
+size_t Decimal::size() const {
+	return Value.size();
+}
+
+const Decimal operator-(const Decimal& d1, const Decimal d2) {
+	return d1 + (-d2);
 }

@@ -20,11 +20,15 @@ public:
 
 	Decimal& operator=(const Decimal&);
 
+	CONST Decimal operator-() const;
+
 	friend const Decimal operator+(const Decimal&, const Decimal&);
-	//friend const Decimal operator-(const Decimal&, const Decimal&);
+	friend const Decimal operator-(const Decimal&, const Decimal&);
 	friend bool operator>(CONST  Decimal&, CONST Decimal&);
 	
 	//friend std::ostream& operator<<(std::ostream&, const Decimal&);
+
+	size_t size() const;
 private:
 	std::string Value;
 	bool Sign = false;
