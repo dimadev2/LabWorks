@@ -113,3 +113,52 @@ const Decimal operator+(const Decimal& d1, const Decimal& d2) {
 
 	return static_cast<const Decimal>(res);
 }
+
+bool operator>(CONST Decimal& d1, CONST Decimal& d2) {
+	if (d1.Value.size() > d2.Value.size()) {
+		return true;
+	}
+	else if (d1.Value.size() < d2.Value.size()) {
+		return false;
+	}
+
+	for (int i = d1.Value.size() - 1; i >= 0; i--) {
+		if (d1.Value[i] > d2.Value[i]) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+CONST Decimal operator-(CONST Decimal& d1, cCONST Decimal& d2) {
+	std::string maxValue = d1 > d2 ? d1.Value : d2.Value;
+	std::string minValue = d1 > d2 ? d2.Value : d1.Value;
+
+	std::string res = "";
+
+	for (int i = 0; i < minValue.size(); i++) {
+		int tmp = toInt(maxValue[i]) - toInt(minValue[i]);
+		if (tmp < 0) {
+			tmp += 10;
+			maxValue[i+1] -= 1;
+		}
+		res += toChar(tmp);
+	}
+
+	for (int i = minValue.size(); i < maxValue.size(); i++) {
+		if (maxValue[i] < '0') {
+			maxValue[i+1] -= 1;
+			maxValue[i] += 10;
+		}
+		res += maxValue[i];
+	}
+
+	while (!res.empty() && res[res.size() - 1] == '0') {
+		res.pop_back();
+	}
+
+	Decimal Res = Decimal(res);
+
+	return static_cast<CONST Decimal>(Res);
+}

@@ -22,6 +22,7 @@ public:
 
 	friend const Decimal operator+(const Decimal&, const Decimal&);
 	//friend const Decimal operator-(const Decimal&, const Decimal&);
+	friend bool operator>(CONST  Decimal&, CONST Decimal&);
 	
 	//friend std::ostream& operator<<(std::ostream&, const Decimal&);
 private:
